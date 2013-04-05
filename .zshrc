@@ -60,12 +60,9 @@ function most_useless_use_of_zsh {
 				    }
 				    
 				    function pmstat {
-				      ps auxm | awk '{ print
-"\033[1;31m"$2"\033[0m\t""\033[1;32m"$6/1024" MB\033[0m\t";
-for (i=11; i<=NF; i++) printf("%s%s", $i, (i==NF) ? "\n" : OFS) }' \
-  | awk '{ if ( ( NR % 2 ) == 0 ) { printf("%s\n",$0) } else {
+				      ps auxm | awk '{ print "\033[1;31m"$2"\033[0m\t""\033[1;32m"$6/1024" MB\033[0m\t"; for (i=11; i<=NF; i++) printf("%s%s", $i, (i==NF) ? "\n" : OFS) }' \ | awk '{ if ( ( NR % 2 ) == 0 ) { printf("%s\n",$0) } else {
 printf("%s ",$0) } }' \
-  | awk '{ print ( (NR==1) ? "\033[1;34mPID\tSIZE\t\t COMMAND" : $0 )
+| awk '{ print ( (NR==1) ? "\033[1;34mPID\tSIZE\t\t COMMAND" : $0 )
 }' | less -mR
 }
 
@@ -75,8 +72,7 @@ function pcstat {
 for (i=11; i<=NF; i++) printf("%s%s", $i, (i==NF) ? "\n" : OFS) }' \
   | awk '{ if ( ( NR % 2 ) == 0 ) { printf("%s\n",$0) } else {
 printf("%s ",$0) } }' \
-  | awk '{ print ( (NR==1) ? "\033[1;34mPID\tLOAD\t COMMAND" : $0 ) }'
-| less -mR
+  | awk '{ print ( (NR==1) ? "\033[1;34mPID\tLOAD\t COMMAND" : $0 ) }' | less -mR
 }
 
 function wiki {
@@ -105,11 +101,7 @@ function wiki {
 					  }
 					  zle -N expand-or-complete-with-dots
 					  bindkey "^I" expand-or-complete-with-dots
-					  
-					  # Alt+S inserts sudo at
-beginning of line
-insert_sudo () { zle beginning-of-line; zle -U "sudo " }
-zle -N insert-sudo insert_sudo
+# Alt+S inserts sudo at beginning of line insert_sudo () { zle beginning-of-line; zle -U "sudo " } zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
 
 ####
@@ -135,8 +127,7 @@ zstyle ':completion:*:ssh:*' group-order 'users' 'hosts'
 
 # Set up colors, prompts, and messages
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the
-character to insert%s
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' prompt 'Found %e errors:'
 zstyle :compinstall filename $HOME/.zshcompl
@@ -162,8 +153,7 @@ zstyle ':completion:*:manuals' separate-sections true
 # offer indexes before parameters in subscripts
 zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 
-# command for process lists, the local web server details and host
-completion
+# command for process lists, the local web server details and host completion
 zstyle ':completion:*:processes' command 'ps -o pid,s,nice,stime,args'
 zstyle ':completion:*:processes-names' command 'ps axho command'
 zstyle ':completion:*:urls' local 'www' '/var/www/htdocs' 'public_html'
@@ -227,12 +217,8 @@ alias ssh="ssh -Cc arcfour,blowfish-cbc"
 
 # Mount home drives
 # can be used as a template for own drives
-#alias commiebastard="mkdir /Volumes/commiebastard 2> /dev/null; sshfs
-threv@threv.crabdance.com:/home/threv /Volumes/commiebastard
--oreconnect,volname=commiebastard"
-#alias elements="mkdir /Volumes/Elements 2> /dev/null; sshfs
-threv@threv.crabdance.com:/media/threv/Elements /Volumes/Elements
--oreconnect,volname=Elements"
+#alias commiebastard="mkdir /Volumes/commiebastard 2> /dev/null; sshfs threv@threv.crabdance.com:/home/threv /Volumes/commiebastard -oreconnect,volname=commiebastard"
+#alias elements="mkdir /Volumes/Elements 2> /dev/null; sshfs threv@threv.crabdance.com:/media/threv/Elements /Volumes/Elements -oreconnect,volname=Elements"
 
 # SOCKS proxy to home server
 #
@@ -253,8 +239,7 @@ bindkey -s "\el" " 2>&1|less^M"
 # Update this when macvim updates
 export EDITOR=/usr/bin/jed
 
-# Sets ANSI color for man pages, and the pager in general. Also
-ensures % display on bottom.
+# Sets ANSI color for man pages, and the pager in general. Also ensures % display on bottom.
 export PAGER=most
 
 # For fontforge
@@ -271,9 +256,7 @@ export MYSQL_PS1="\\d> "
 setopt glob
 setopt globdots
 setopt pushdminus
-# If you really do want to clobber a file, you can use the >!
-operator. To make things easier in this case, the > is stored in the
-history list as a >!
+# If you really do want to clobber a file, you can use the >! operator. To make things easier in this case, the > is stored in the history list as a >!
 setopt noclobber
 # Pipe to multiple outputs
 setopt multios
