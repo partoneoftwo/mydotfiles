@@ -8,6 +8,7 @@ about tips on how to create a cool zsh config file, he responded with
 this:
 
 oof, that's a difficult question to answer :) Here's a link to mine.
+https://github.com/mlsimpson/dotfiles/blob/master/.zshrc
 I've tried to comment for explanation. I've been using zsh for 3 years
 so it's got a lot of stuff I've added, no doubt. Start with the setopt
 stuff at the bottom; that's where a lot of the magic of zsh comes into
@@ -20,7 +21,8 @@ love comes into play. Tab completion is so powerful, and that section
 in my .zshrc hasn't been changed in a while, so it's robust.
 
 The top of my .zshrc contains a lot of oh-my-zsh configuration, which
-many zsh users frown upon. It's been an integral part of my setup
+many zsh users frown upon. https://github.com/robbyrussell/oh-my-zsh
+It's been an integral part of my setup
 since day one, and I love it, so your miles may vary. It includes a
 lot of preconfigured plugin functions and completions for typical
 programs, so I like it a lot.
@@ -32,6 +34,7 @@ Thankfully, all I've seen don't take much time to set up.
 
 Here is a link to my delicious bookmarks tagged 'zsh' There's a lot of
 gems in here, too. Happy hacking!
+https://delicious.com/mauithrev/zsh
 
 source:
 http://www.reddit.com/r/commandline/comments/19oor1/zero_tolerance_policy_no_harmful_commands/c971yk4
