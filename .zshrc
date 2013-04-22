@@ -1,6 +1,7 @@
 # my own Zsh config
 # uses Oh-My-Zsh framework
 # and other zsh configuration options
+# please note you need to download oh-my-zsh and install it in order for this config to work.
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
